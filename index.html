@@ -1,14 +1,109 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuelNFlex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="welcome-prompt.css">
+    <link rel="stylesheet" href="user-info-form.css">
+    <link rel="stylesheet" href="goal-selection.css">
+    <link rel="stylesheet" href="community.css">
+    <link rel="stylesheet" href="settings-page.css">
 </head>
-<body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+<body class="light">
+    <welcome-prompt></welcome-prompt>
+    <user-info-form style="display: none;"></user-info-form>
+    <goal-selection style="display: none;"></goal-selection>
+    <settings-page id="settings-page" style="display: none;"></settings-page>
+
+    <div id="app-container" style="display: none;">
+      <div id="settings-icon-container">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/settings.png" alt="Settings">
+      </div>
+        <header>
+            <div class="logo-container">
+                <h1 data-translate="title"><span class="fuel">Fuel</span><span class="n">N</span><span class="flex">Flex</span></h1>
+            </div>
+            <p data-translate="subtitle">Your personalized fitness toolkit.</p>
+            <nav>
+                <button id="show-training-plan" class="active" data-translate="training-plan">Training Plan</button>
+                <button id="show-calorie-tracker" data-translate="calorie-tracker">Calorie Tracker</button>
+                <button id="show-community" data-translate="community">Community</button>
+            </nav>
+        </header>
+        <main>
+            <section id="training-plan-section" class="content-card">
+                <div id="user-info-display"></div>
+                <div id="selection-container">
+                    <div class="selection-group" id="race-distance-selection-group">
+                        <h2 data-translate="choose-race-distance">Choose Your Race Distance</h2>
+                        <div class="slider-container">
+                            <input type="range" id="race-distance-slider" min="1" max="100" value="10">
+                            <div id="slider-value">10 km</div>
+                        </div>
+                    </div>
+                    <div class="selection-group">
+                        <h2 id="baseline-time-label" data-translate="baseline-time">Your Current 5k Time</h2>
+                        <div class="time-input-group">
+                            <input type="number" id="baseline-hours" placeholder="HH">
+                            <span>:</span>
+                            <input type="number" id="baseline-minutes" placeholder="MM">
+                            <span>:</span>
+                            <input type="number" id="baseline-seconds" placeholder="SS">
+                        </div>
+                    </div>
+                    <div class="selection-group">
+                        <h2 data-translate="weeks-to-train">Weeks to Train</h2>
+                        <div class="slider-container">
+                            <input type="range" id="weeks-to-train-slider" min="4" max="20" value="8">
+                            <div id="weeks-slider-value">8 weeks</div>
+                        </div>
+                    </div>
+                    <button id="generate-plan-btn" data-translate="generate-plan">Generate Plan</button>
+                </div>
+                <div id="plan-container"></div>
+            </section>
+
+            <section id="calorie-tracker-section" class="hidden content-card">
+                <div id="calorie-user-info-display"></div>
+                <div id="calorie-summary-container"></div>
+                <div id="meal-logging-container">
+                    <h3 data-translate="log-a-meal">Log a Meal</h3>
+                    <div class="form-group">
+                        <label for="meal-type" data-translate="meal-type">Meal Type</label>
+                        <select id="meal-type">
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Snack">Snack</option>
+                        </select>
+                    </div>
+                    <p data-translate="upload-a-photo">Upload a photo of your meal to get an estimated calorie count.</p>
+                    <input type="file" id="meal-photo-input" accept="image/*" style="display: none;">
+                    <button id="upload-meal-photo-btn" data-translate="upload-photo">Upload Photo</button>
+                </div>
+                <div id="logged-meals-container"></div>
+                <div id="ads-container"></div>
+            </section>
+
+            <section id="community-section" class="hidden content-card">
+                <community-forum></community-forum>
+            </section>
+        </main>
+        <footer>
+            <p data-translate="footer-text">&copy; 2024 FuelNFlex</p>
+        </footer>
+    </div>
+    <script src="welcome-prompt.js"></script>
+    <script src="user-info-form.js"></script>
+    <script src="goal-selection.js"></script>
+    <script src="community.js"></script>
+    <script src="settings-page.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+settings-page{
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1001;
+}
+.settings-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.setting-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.setting-option:last-child {
+  border-bottom: none;
+}
+
+.setting-option label {
+  font-weight: 500;
+}
+
+.setting-option select, .setting-option button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.setting-option button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
