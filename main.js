@@ -341,20 +341,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button id="print-plan-btn">Print</button>
                 </div>
             </div>
-            <p>Based on your training, a realistic goal time is around <strong>${formattedGoalTime}</strong>.</p>`;
+            <p>Based on your training, a realistic goal time is around <strong>${formattedGoalTime}</strong>.</p>
+            <table class="plan-table">
+        `;
 
         plan.weeks.forEach(week => {
-            html += `<div class="plan-week"><h3>${week.title}</h3>`;
+            html += `
+                <tbody class="plan-week">
+                    <tr><th colspan="3"><h3>${week.title}</h3></th></tr>
+            `;
             week.days.forEach(day => {
                 html += `
-                    <div class="plan-day">
-                        <input type="checkbox" id="${week.title}-${day.day}" name="${week.title}-${day.day}">
-                        <label for="${week.title}-${day.day}"><strong>${day.day}:</strong> ${day.activity}</label>
-                    </div>`;
+                    <tr class="plan-day">
+                        <td><input type="checkbox" id="${week.title}-${day.day}" name="${week.title}-${day.day}"></td>
+                        <td><label for="${week.title}-${day.day}"><strong>${day.day}</strong></label></td>
+                        <td><label for="${week.title}-${day.day}">${day.activity}</label></td>
+                    </tr>`;
             });
-            html += '</div>';
+            html += '</tbody>';
         });
-        html += `<button id="back-button">Back</button>`;
+        html += `</table><button id="back-button">Back</button>`;
         container.innerHTML = html;
 
         document.getElementById('back-button').addEventListener('click', () => {
@@ -364,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
             checkbox.addEventListener('change', (e) => {
-                e.target.parentElement.classList.toggle('completed', e.target.checked);
+                e.target.closest('.plan-day').classList.toggle('completed', e.target.checked);
             });
         });
 

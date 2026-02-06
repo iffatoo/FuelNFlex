@@ -183,19 +183,59 @@ button#generate-plan-btn {
 }
 
 /* Plan Container */
-.plan-week {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.plan-table {
     width: 100%;
     max-width: 800px;
-    box-sizing: border-box;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+.plan-table .plan-week h3 {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    color: #fff;
     text-align: left;
 }
 
-body.dark .plan-week {
-    background: rgba(78, 67, 118, 0.15);
-    border-color: rgba(255, 255, 255, 0.1);
+body.dark .plan-table .plan-week h3 {
+    color: #e0e0e0;
+}
+
+.plan-table th {
+    text-align: left;
+    padding: 1rem;
+}
+
+.plan-table .plan-day td {
+    padding: 0.8rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark .plan-table .plan-day td {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.plan-table .plan-day td:first-child {
+    width: 40px;
+}
+
+.plan-table .plan-day td:nth-child(2) {
+    width: 120px;
+}
+
+.plan-day.completed label {
+    text-decoration: line-through;
+    color: #888;
+}
+
+body.dark .plan-day.completed label {
+    color: #666;
+}
+
+.plan-day input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
